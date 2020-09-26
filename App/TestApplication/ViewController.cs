@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Binding;
+using Foundation;
 using System;
 using UIKit;
 
@@ -26,7 +27,22 @@ namespace TestApplication
 			url = url.Append ("testAppState.json", false);
 			System.IO.File.WriteAllText (url.Path, TestData.GetJson ());
 
-			text.Text = "After";
+			var proxy = new WidgetCenterProxy();
+			proxy.ReloadAllTimeLines();
+			proxy.GetCurrentConfigurationsWithCompletion((widgets) => {
+
+				foreach (var widget in widgets)
+				{
+					Console.WriteLine(widget.Kind + " " + widget.Family);
+
+				}
+
+				InvokeOnMainThread(() => {
+					text.Text = "After widgets " + widgets.Count;
+				});
+			}
+			);
+
 		}
 
 		public override void DidReceiveMemoryWarning ()

@@ -147,5 +147,11 @@
         <BuildOutput Condition="'$(Platform)' == 'iPhoneSimulator'">DerivedData/TestNativeApp/Build/Products/Debug-iphonesimulator</BuildOutput>
 	</AdditionalAppExtensions>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\WidgetCenterProxyBinder\WidgetCenterProxyBinder\WidgetCenterProxyBinder.csproj">
+        <Project>{8F198950-2819-4114-9317-886D141E25B9}</Project>
+        <Name>WidgetCenterProxyBinder</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
